@@ -1,0 +1,43 @@
+grammar org.xtext.model.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/model/MyDsl"
+
+Model:
+	components+=Component*
+	connections+=Connection*;
+	
+Component:
+	LED | Microcontroller | Button |
+;
+
+LED:
+	'define' 'LED' name=ID '{'
+	'type' '=' '{' type=ComponentType '}'
+	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
+	'states' '=' '[' states+=State (',' states+=State)* ']'
+	'}'	
+	;
+Button:
+	'define' 'Button' name=ID '{'
+	'type' '=' '{' type=ComponentType '}'
+	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
+	'states' '=' '[' states+=State (',' states+=State)* ']'
+	'}'
+	;	
+ComponentType:
+	'actor' | 'Microcontroller'
+;	
+Connector:
+	ID
+;
+State:
+	ID '{' condition=Condition '}' 
+;
+Condition:
+	ID '=' value=BOOLEAN
+;
+
+enum BOOLEAN:
+	HIGH | LOW 
+	
+;
