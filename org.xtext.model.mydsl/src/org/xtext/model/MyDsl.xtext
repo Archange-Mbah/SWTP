@@ -25,7 +25,7 @@ Button:
 	'}'
 	;	
 ComponentType:
-	'actor' | 'Microcontroller'
+	'actor' | 'Microcontroller' | 'sensor'
 ;	
 Connector:
 	ID
