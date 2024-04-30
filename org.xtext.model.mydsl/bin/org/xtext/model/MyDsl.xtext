@@ -7,7 +7,7 @@ Model:
 	connections+=Connection*;
 	
 Component:
-	LED | Microcontroller | Button |
+	LED | Microcontroller | Button | Buzzer| Potentiometer|Photoresistor
 ;
 
 LED:
@@ -29,6 +29,24 @@ ComponentType:
 ;	
 Connector:
 	ID
+;
+Buzzer:
+    'define' 'Buzzer'  '{'
+	'type' '=' '{' type=ComponentType '}'
+	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
+	'states' '=' '[' states+=State (',' states+=State)* ']'
+	'}'
+;
+Potentiometer:
+	'define' 'Potentiometer' name=ID '{'
+	'type' '=' '{' type=ComponentType '}'
+	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
+	'states' '=' '[' states+=State (',' states+=State)* ']'
+	'}'
+;	
+Photoresistor:
+	
+	
 ;
 State:
 	ID '{' condition=Condition '}' 
