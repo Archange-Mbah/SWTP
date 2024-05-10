@@ -1,0 +1,9 @@
+grammar org.xtext.example.mydsl.Arduino with org.eclipse.xtext.common.Terminals
+
+generate arduino "http://www.xtext.org/example/mydsl/Arduino"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

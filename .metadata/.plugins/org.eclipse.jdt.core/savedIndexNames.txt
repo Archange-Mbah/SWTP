@@ -1,0 +1,22 @@
+INDEX VERSION 1.134+C:\Users\User\Desktop\Bureau\4\project\SWTP\.metadata\.plugins\org.eclipse.jdt.core
+240441458.index
+1998921531.index
+3611651205.index
+712365146.index
+1750326969.index
+1285967836.index
+1619575910.index
+2928188337.index
+1130885565.index
+3266066135.index
+874124434.index
+2212279006.index
+1050859721.index
+3479537667.index
+1667521806.index
+1634607960.index
+1961322328.index
+1245508726.index
+3952789782.index
+2976042154.index
+2945420472.index
