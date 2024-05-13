@@ -1,0 +1,83 @@
+ 
+
+component ARDUINO {
+	type = {microcontroller},
+	connectors = [GND1 GND2],
+}
+
+component LEDBLUE {
+type = {actor},
+connectors = [GND DIGITAL_IN],
+states = [ON {DIGITAL_IN = HIGH} OFF {DIGITAL_IN = LOW}]
+} 
+
+ component BUTTON_S1{
+    type={actor},
+    connectors= [GND DIGITAL_IN] ,
+    states=[PRESSED {DIGITAL_IN= HIGH } RELEASED { DIGITAL_IN=LOW}]
+}
+
+component BUTTON_S2{
+    type={actor},
+    connectors= [GND DIGITAL_IN] ,
+    states=[PRESSED {DIGITAL_IN= HIGH } RELEASED { DIGITAL_IN=LOW}]
+}
+
+component BUTTON_S3{
+    type={actor},
+    connectors= [GND  DIGITAL_IN],
+    states=[PRESSED {DIGITAL_IN= HIGH } RELEASED { DIGITAL_IN=LOW}]
+}
+
+component BUTTON_S4{
+    type={actor},
+    connectors= [GND DIGITAL_IN],
+    states=[PRESSED {DIGITAL_IN= HIGH } RELEASED { DIGITAL_IN=LOW}]
+}
+
+component Potentiometer{
+    //ID oder nicht
+    type={actor },
+    connectors = [GND  ANALOG_IN],
+   // range = [0, 1023]// Fotowiderstandswertebereich
+}
+component activeBuzzer{
+    type={actor},
+    connectors = [GND  DIGITAL_IN],
+    states = [ON {DIGITAL_IN = HIGH} OFF {DIGITAL_IN = LOW}]
+}
+component PhotoResistor {
+    type = {sensor},
+    connectors = [GND ANALOG_IN],
+}
+component JoyStick {
+    type = {sensor},
+    connectors = [GND ANALOG_X  ANALOG_Y  DIGITAL_BUTTON],
+    states = [PRESSED {DIGITAL_BUTTON = HIGH} RELEASED {DIGITAL_BUTTON = LOW}]
+    //range_X = [0, 1023],
+   // range_Y = [0, 1023]
+}
+
+component LED_MATRIX {
+    type = {actor},
+    connectors = [GND  /*  DIGITAL_OUT_DATA  DIGITAL_OUT_CLK, DIGITAL_OUT_CS*/],
+   // size = [8, 8] // Annahme: 8x8 LED-Matrix
+}
+
+
+
+connection {
+ new LEDBLUE LEDBLUE1
+ new ARDUINO ARDUINO1
+ LEDBLUE1.GND1 = ARDUINO1.GND1
+}
+
+behavior{
+@startuml
+Off: LEDBLUE1.state=LEDBLUE.OFF
+On: LEDBLUE1.state=LEDBLUE.ON
+[*] --> Off
+Off --> On : delay[1000]
+On --> Off : delay[1000]
+@enduml
+}

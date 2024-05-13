@@ -178,6 +178,62 @@ public interface ArduinoPackage extends EPackage
   int COMPONENT_STATE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.arduino.impl.minImpl <em>min</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.arduino.impl.minImpl
+   * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getmin()
+   * @generated
+   */
+  int MIN = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MIN__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>min</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MIN_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.arduino.impl.maxImpl <em>max</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.arduino.impl.maxImpl
+   * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getmax()
+   * @generated
+   */
+  int MAX = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAX__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>max</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAX_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.arduino.impl.connectionImpl <em>connection</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -185,7 +241,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getconnection()
    * @generated
    */
-  int CONNECTION = 3;
+  int CONNECTION = 5;
 
   /**
    * The feature id for the '<em><b>Component</b></em>' containment reference list.
@@ -222,7 +278,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getcomponent()
    * @generated
    */
-  int COMPONENT = 4;
+  int COMPONENT = 6;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' reference.
@@ -259,7 +315,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getwiring()
    * @generated
    */
-  int WIRING = 5;
+  int WIRING = 7;
 
   /**
    * The feature id for the '<em><b>Src</b></em>' reference.
@@ -314,7 +370,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getbehavior()
    * @generated
    */
-  int BEHAVIOR = 6;
+  int BEHAVIOR = 8;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -351,7 +407,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#gettransition()
    * @generated
    */
-  int TRANSITION = 7;
+  int TRANSITION = 9;
 
   /**
    * The feature id for the '<em><b>Src state</b></em>' reference.
@@ -397,7 +453,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#gettransition_effect()
    * @generated
    */
-  int TRANSITION_EFFECT = 8;
+  int TRANSITION_EFFECT = 10;
 
   /**
    * The feature id for the '<em><b>Microseconds</b></em>' attribute.
@@ -425,7 +481,7 @@ public interface ArduinoPackage extends EPackage
    * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getstate()
    * @generated
    */
-  int STATE = 9;
+  int STATE = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -570,6 +626,48 @@ public interface ArduinoPackage extends EPackage
    * @generated
    */
   EAttribute getcomponent_state_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.arduino.min <em>min</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>min</em>'.
+   * @see org.xtext.example.mydsl.arduino.min
+   * @generated
+   */
+  EClass getmin();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.arduino.min#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.arduino.min#getName()
+   * @see #getmin()
+   * @generated
+   */
+  EAttribute getmin_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.arduino.max <em>max</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>max</em>'.
+   * @see org.xtext.example.mydsl.arduino.max
+   * @generated
+   */
+  EClass getmax();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.arduino.max#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.arduino.max#getName()
+   * @see #getmax()
+   * @generated
+   */
+  EAttribute getmax_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.arduino.connection <em>connection</em>}'.
@@ -936,6 +1034,42 @@ public interface ArduinoPackage extends EPackage
      * @generated
      */
     EAttribute COMPONENT_STATE__NAME = eINSTANCE.getcomponent_state_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.arduino.impl.minImpl <em>min</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.arduino.impl.minImpl
+     * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getmin()
+     * @generated
+     */
+    EClass MIN = eINSTANCE.getmin();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MIN__NAME = eINSTANCE.getmin_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.arduino.impl.maxImpl <em>max</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.arduino.impl.maxImpl
+     * @see org.xtext.example.mydsl.arduino.impl.ArduinoPackageImpl#getmax()
+     * @generated
+     */
+    EClass MAX = eINSTANCE.getmax();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MAX__NAME = eINSTANCE.getmax_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.arduino.impl.connectionImpl <em>connection</em>}' class.

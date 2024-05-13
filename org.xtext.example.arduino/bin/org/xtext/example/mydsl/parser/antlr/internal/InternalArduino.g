@@ -240,25 +240,29 @@ rulecomponents returns [EObject current=null]
 		{
 			newLeafNode(otherlv_13, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_13());
 		}
+		otherlv_14=','
+		{
+			newLeafNode(otherlv_14, grammarAccess.getComponentsAccess().getCommaKeyword_14());
+		}
 		(
-			otherlv_14='states'
+			otherlv_15='states'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getComponentsAccess().getStatesKeyword_14_0());
+				newLeafNode(otherlv_15, grammarAccess.getComponentsAccess().getStatesKeyword_15_0());
 			}
-			otherlv_15='='
+			otherlv_16='='
 			{
-				newLeafNode(otherlv_15, grammarAccess.getComponentsAccess().getEqualsSignKeyword_14_1());
+				newLeafNode(otherlv_16, grammarAccess.getComponentsAccess().getEqualsSignKeyword_15_1());
 			}
-			otherlv_16='['
+			otherlv_17='['
 			{
-				newLeafNode(otherlv_16, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_14_2());
+				newLeafNode(otherlv_17, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_15_2());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getComponentsAccess().getComponent_stateComponent_stateParserRuleCall_14_3_0());
+						newCompositeNode(grammarAccess.getComponentsAccess().getComponent_stateComponent_stateParserRuleCall_15_3_0());
 					}
-					lv_component_state_17_0=rulecomponent_state
+					lv_component_state_18_0=rulecomponent_state
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getComponentsRule());
@@ -266,20 +270,20 @@ rulecomponents returns [EObject current=null]
 						add(
 							$current,
 							"component_state",
-							lv_component_state_17_0,
+							lv_component_state_18_0,
 							"org.xtext.example.mydsl.Arduino.component_state");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)*
-			otherlv_18=']'
+			otherlv_19=']'
 			{
-				newLeafNode(otherlv_18, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_14_4());
+				newLeafNode(otherlv_19, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_15_4());
 			}
 		)*
-		otherlv_19='}'
+		otherlv_20='}'
 		{
-			newLeafNode(otherlv_19, grammarAccess.getComponentsAccess().getRightCurlyBracketKeyword_15());
+			newLeafNode(otherlv_20, grammarAccess.getComponentsAccess().getRightCurlyBracketKeyword_16());
 		}
 	)
 ;
@@ -364,6 +368,30 @@ ruleconnectors returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 		{
 			$current.merge(kw);
 			newLeafNode(kw, grammarAccess.getConnectorsAccess().getA0Keyword_4());
+		}
+		    |
+		kw='ANALOG_IN'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConnectorsAccess().getANALOG_INKeyword_5());
+		}
+		    |
+		kw='ANALOG_X'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConnectorsAccess().getANALOG_XKeyword_6());
+		}
+		    |
+		kw='ANALOG_Y'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConnectorsAccess().getANALOG_YKeyword_7());
+		}
+		    |
+		kw='DIGITAL_BUTTON'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConnectorsAccess().getDIGITAL_BUTTONKeyword_8());
 		}
 	)
 ;

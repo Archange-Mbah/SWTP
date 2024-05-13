@@ -91,6 +91,16 @@ public class ArduinoAdapterFactory extends AdapterFactoryImpl
         return createcomponent_stateAdapter();
       }
       @Override
+      public Adapter casemin(min object)
+      {
+        return createminAdapter();
+      }
+      @Override
+      public Adapter casemax(max object)
+      {
+        return createmaxAdapter();
+      }
+      @Override
       public Adapter caseconnection(connection object)
       {
         return createconnectionAdapter();
@@ -188,6 +198,36 @@ public class ArduinoAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createcomponent_stateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.arduino.min <em>min</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.arduino.min
+   * @generated
+   */
+  public Adapter createminAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.arduino.max <em>max</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.arduino.max
+   * @generated
+   */
+  public Adapter createmaxAdapter()
   {
     return null;
   }

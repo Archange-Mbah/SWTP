@@ -19,6 +19,12 @@
     <genClasses ecoreClass="Arduino.ecore#//component_state">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Arduino.ecore#//component_state/name"/>
     </genClasses>
+    <genClasses ecoreClass="Arduino.ecore#//min">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Arduino.ecore#//min/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Arduino.ecore#//max">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Arduino.ecore#//max/name"/>
+    </genClasses>
     <genClasses ecoreClass="Arduino.ecore#//connection">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Arduino.ecore#//connection/component"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Arduino.ecore#//connection/wiring"/>

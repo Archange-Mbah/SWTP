@@ -21,6 +21,8 @@ import org.xtext.example.mydsl.arduino.component;
 import org.xtext.example.mydsl.arduino.component_state;
 import org.xtext.example.mydsl.arduino.components;
 import org.xtext.example.mydsl.arduino.connection;
+import org.xtext.example.mydsl.arduino.max;
+import org.xtext.example.mydsl.arduino.min;
 import org.xtext.example.mydsl.arduino.state;
 import org.xtext.example.mydsl.arduino.transition;
 import org.xtext.example.mydsl.arduino.transition_effect;
@@ -58,6 +60,12 @@ public class ArduinoSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case ArduinoPackage.CONNECTION:
 				sequence_connection(context, (connection) semanticObject); 
+				return; 
+			case ArduinoPackage.MAX:
+				sequence_max(context, (max) semanticObject); 
+				return; 
+			case ArduinoPackage.MIN:
+				sequence_min(context, (min) semanticObject); 
 				return; 
 			case ArduinoPackage.STATE:
 				sequence_state(context, (state) semanticObject); 
@@ -172,6 +180,46 @@ public class ArduinoSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_connection(ISerializationContext context, connection semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     max returns max
+	 *
+	 * Constraint:
+	 *     name=ID
+	 * </pre>
+	 */
+	protected void sequence_max(ISerializationContext context, max semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ArduinoPackage.Literals.MAX__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArduinoPackage.Literals.MAX__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMaxAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     min returns min
+	 *
+	 * Constraint:
+	 *     name=ID
+	 * </pre>
+	 */
+	protected void sequence_min(ISerializationContext context, min semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, ArduinoPackage.Literals.MIN__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArduinoPackage.Literals.MIN__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMinAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

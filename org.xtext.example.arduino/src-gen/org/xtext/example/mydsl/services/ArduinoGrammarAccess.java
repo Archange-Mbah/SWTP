@@ -35,12 +35,6 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cBehaviorBehaviorParserRuleCall_2_0 = (RuleCall)cBehaviorAssignment_2.eContents().get(0);
 		
 		///*
-		//Model:
-		//    greetings+=Greeting*;
-		//Greeting:
-		//    'Hello' name=ID '!';
-		//*/
-		///*
 		//Bauteilbeschreibung:
 		//component LED-RED {
 		//    type = {actor},
@@ -96,25 +90,26 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cConnectorsAssignment_12 = (Assignment)cGroup.eContents().get(12);
 		private final RuleCall cConnectorsConnectorsParserRuleCall_12_0 = (RuleCall)cConnectorsAssignment_12.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
-		private final Keyword cStatesKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_14_1 = (Keyword)cGroup_14.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_14_2 = (Keyword)cGroup_14.eContents().get(2);
-		private final Assignment cComponent_stateAssignment_14_3 = (Assignment)cGroup_14.eContents().get(3);
-		private final RuleCall cComponent_stateComponent_stateParserRuleCall_14_3_0 = (RuleCall)cComponent_stateAssignment_14_3.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_14_4 = (Keyword)cGroup_14.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Keyword cCommaKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
+		private final Keyword cStatesKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_15_1 = (Keyword)cGroup_15.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_15_2 = (Keyword)cGroup_15.eContents().get(2);
+		private final Assignment cComponent_stateAssignment_15_3 = (Assignment)cGroup_15.eContents().get(3);
+		private final RuleCall cComponent_stateComponent_stateParserRuleCall_15_3_0 = (RuleCall)cComponent_stateAssignment_15_3.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_15_4 = (Keyword)cGroup_15.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_16 = (Keyword)cGroup.eContents().get(16);
 		
 		//components: 'component' name=ID '{'
 		//    'type' '=' '{' type '}' ','
-		//    'connectors' '=' '[' connectors+=connectors* ']'
+		//    'connectors' '=' '[' connectors+=connectors* ']' ','
 		//    ('states' '=' '[' component_state+=component_state* ']')*
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		// 'component' name=ID '{'
 		//    'type' '=' '{' type '}' ','
-		//    'connectors' '=' '[' connectors+=connectors* ']'
+		//    'connectors' '=' '[' connectors+=connectors* ']' ','
 		//    ('states' '=' '[' component_state+=component_state* ']')*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -167,29 +162,32 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//']'
 		public Keyword getRightSquareBracketKeyword_13() { return cRightSquareBracketKeyword_13; }
 		
+		//','
+		public Keyword getCommaKeyword_14() { return cCommaKeyword_14; }
+		
 		//('states' '=' '[' component_state+=component_state* ']')*
-		public Group getGroup_14() { return cGroup_14; }
+		public Group getGroup_15() { return cGroup_15; }
 		
 		//'states'
-		public Keyword getStatesKeyword_14_0() { return cStatesKeyword_14_0; }
+		public Keyword getStatesKeyword_15_0() { return cStatesKeyword_15_0; }
 		
 		//'='
-		public Keyword getEqualsSignKeyword_14_1() { return cEqualsSignKeyword_14_1; }
+		public Keyword getEqualsSignKeyword_15_1() { return cEqualsSignKeyword_15_1; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_14_2() { return cLeftSquareBracketKeyword_14_2; }
+		public Keyword getLeftSquareBracketKeyword_15_2() { return cLeftSquareBracketKeyword_15_2; }
 		
 		//component_state+=component_state*
-		public Assignment getComponent_stateAssignment_14_3() { return cComponent_stateAssignment_14_3; }
+		public Assignment getComponent_stateAssignment_15_3() { return cComponent_stateAssignment_15_3; }
 		
 		//component_state
-		public RuleCall getComponent_stateComponent_stateParserRuleCall_14_3_0() { return cComponent_stateComponent_stateParserRuleCall_14_3_0; }
+		public RuleCall getComponent_stateComponent_stateParserRuleCall_15_3_0() { return cComponent_stateComponent_stateParserRuleCall_15_3_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_14_4() { return cRightSquareBracketKeyword_14_4; }
+		public Keyword getRightSquareBracketKeyword_15_4() { return cRightSquareBracketKeyword_15_4; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
 	}
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Arduino.type");
@@ -221,11 +219,15 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cGND2Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cDIGITAL_INKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		private final Keyword cA0Keyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cANALOG_INKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cANALOG_XKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cANALOG_YKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cDIGITAL_BUTTONKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		
-		//connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0';
+		//connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0' | 'ANALOG_IN' | 'ANALOG_X' | 'ANALOG_Y' | 'DIGITAL_BUTTON';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0'
+		//'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0' | 'ANALOG_IN' | 'ANALOG_X' | 'ANALOG_Y' | 'DIGITAL_BUTTON'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'GND'
@@ -242,6 +244,18 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		
 		//'A0'
 		public Keyword getA0Keyword_4() { return cA0Keyword_4; }
+		
+		//'ANALOG_IN'
+		public Keyword getANALOG_INKeyword_5() { return cANALOG_INKeyword_5; }
+		
+		//'ANALOG_X'
+		public Keyword getANALOG_XKeyword_6() { return cANALOG_XKeyword_6; }
+		
+		//'ANALOG_Y'
+		public Keyword getANALOG_YKeyword_7() { return cANALOG_YKeyword_7; }
+		
+		//'DIGITAL_BUTTON'
+		public Keyword getDIGITAL_BUTTONKeyword_8() { return cDIGITAL_BUTTONKeyword_8; }
 	}
 	public class Component_stateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Arduino.component_state");
@@ -312,6 +326,34 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		
 		//'LOW'
 		public Keyword getLOWKeyword_1() { return cLOWKeyword_1; }
+	}
+	public class MinElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Arduino.min");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//min: name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+	public class MaxElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Arduino.max");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//max: name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class ConnectionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Arduino.connection");
@@ -701,6 +743,8 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	private final Component_stateElements pComponent_state;
 	private final Connector_definitionElements pConnector_definition;
 	private final LEVELElements pLEVEL;
+	private final MinElements pMin;
+	private final MaxElements pMax;
 	private final ConnectionElements pConnection;
 	private final ComponentElements pComponent;
 	private final WiringElements pWiring;
@@ -726,6 +770,8 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		this.pComponent_state = new Component_stateElements();
 		this.pConnector_definition = new Connector_definitionElements();
 		this.pLEVEL = new LEVELElements();
+		this.pMin = new MinElements();
+		this.pMax = new MaxElements();
 		this.pConnection = new ConnectionElements();
 		this.pComponent = new ComponentElements();
 		this.pWiring = new WiringElements();
@@ -764,12 +810,6 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 
 	
 	///*
-	//Model:
-	//    greetings+=Greeting*;
-	//Greeting:
-	//    'Hello' name=ID '!';
-	//*/
-	///*
 	//Bauteilbeschreibung:
 	//component LED-RED {
 	//    type = {actor},
@@ -793,7 +833,7 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	
 	//components: 'component' name=ID '{'
 	//    'type' '=' '{' type '}' ','
-	//    'connectors' '=' '[' connectors+=connectors* ']'
+	//    'connectors' '=' '[' connectors+=connectors* ']' ','
 	//    ('states' '=' '[' component_state+=component_state* ']')*
 	//'}';
 	public ComponentsElements getComponentsAccess() {
@@ -813,7 +853,7 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getTypeAccess().getRule();
 	}
 	
-	//connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0';
+	//connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0' | 'ANALOG_IN' | 'ANALOG_X' | 'ANALOG_Y' | 'DIGITAL_BUTTON';
 	public ConnectorsElements getConnectorsAccess() {
 		return pConnectors;
 	}
@@ -847,6 +887,24 @@ public class ArduinoGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	
 	public ParserRule getLEVELRule() {
 		return getLEVELAccess().getRule();
+	}
+	
+	//min: name=ID;
+	public MinElements getMinAccess() {
+		return pMin;
+	}
+	
+	public ParserRule getMinRule() {
+		return getMinAccess().getRule();
+	}
+	
+	//max: name=ID;
+	public MaxElements getMaxAccess() {
+		return pMax;
+	}
+	
+	public ParserRule getMaxRule() {
+		return getMaxAccess().getRule();
 	}
 	
 	///*

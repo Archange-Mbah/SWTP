@@ -37,7 +37,7 @@ public class ArduinoParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTransitionAccess().getAlternatives_0(), "rule__Transition__Alternatives_0");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 			builder.put(grammarAccess.getComponentsAccess().getGroup(), "rule__Components__Group__0");
-			builder.put(grammarAccess.getComponentsAccess().getGroup_14(), "rule__Components__Group_14__0");
+			builder.put(grammarAccess.getComponentsAccess().getGroup_15(), "rule__Components__Group_15__0");
 			builder.put(grammarAccess.getComponent_stateAccess().getGroup(), "rule__Component_state__Group__0");
 			builder.put(grammarAccess.getConnector_definitionAccess().getGroup(), "rule__Connector_definition__Group__0");
 			builder.put(grammarAccess.getConnectionAccess().getGroup(), "rule__Connection__Group__0");
@@ -54,8 +54,10 @@ public class ArduinoParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModelAccess().getBehaviorAssignment_2(), "rule__Model__BehaviorAssignment_2");
 			builder.put(grammarAccess.getComponentsAccess().getNameAssignment_1(), "rule__Components__NameAssignment_1");
 			builder.put(grammarAccess.getComponentsAccess().getConnectorsAssignment_12(), "rule__Components__ConnectorsAssignment_12");
-			builder.put(grammarAccess.getComponentsAccess().getComponent_stateAssignment_14_3(), "rule__Components__Component_stateAssignment_14_3");
+			builder.put(grammarAccess.getComponentsAccess().getComponent_stateAssignment_15_3(), "rule__Components__Component_stateAssignment_15_3");
 			builder.put(grammarAccess.getComponent_stateAccess().getNameAssignment_0(), "rule__Component_state__NameAssignment_0");
+			builder.put(grammarAccess.getMinAccess().getNameAssignment(), "rule__Min__NameAssignment");
+			builder.put(grammarAccess.getMaxAccess().getNameAssignment(), "rule__Max__NameAssignment");
 			builder.put(grammarAccess.getConnectionAccess().getComponentAssignment_3(), "rule__Connection__ComponentAssignment_3");
 			builder.put(grammarAccess.getConnectionAccess().getWiringAssignment_4(), "rule__Connection__WiringAssignment_4");
 			builder.put(grammarAccess.getComponentAccess().getComponentsAssignment_1(), "rule__Component__ComponentsAssignment_1");

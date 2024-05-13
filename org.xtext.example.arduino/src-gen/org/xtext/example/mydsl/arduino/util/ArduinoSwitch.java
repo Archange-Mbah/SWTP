@@ -94,6 +94,20 @@ public class ArduinoSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArduinoPackage.MIN:
+      {
+        min min = (min)theEObject;
+        T result = casemin(min);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArduinoPackage.MAX:
+      {
+        max max = (max)theEObject;
+        T result = casemax(max);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArduinoPackage.CONNECTION:
       {
         connection connection = (connection)theEObject;
@@ -191,6 +205,38 @@ public class ArduinoSwitch<T> extends Switch<T>
    * @generated
    */
   public T casecomponent_state(component_state object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>min</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>min</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casemin(min object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>max</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>max</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casemax(max object)
   {
     return null;
   }

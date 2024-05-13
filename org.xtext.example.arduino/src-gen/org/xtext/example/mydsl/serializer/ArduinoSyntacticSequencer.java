@@ -21,14 +21,14 @@ import org.xtext.example.mydsl.services.ArduinoGrammarAccess;
 public class ArduinoSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ArduinoGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_components___RightSquareBracketKeyword_14_4_StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2__a;
-	protected AbstractElementAlias match_components___StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2_RightSquareBracketKeyword_14_4__a;
+	protected AbstractElementAlias match_components___RightSquareBracketKeyword_15_4_StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2__a;
+	protected AbstractElementAlias match_components___StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2_RightSquareBracketKeyword_15_4__a;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ArduinoGrammarAccess) access;
-		match_components___RightSquareBracketKeyword_14_4_StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_14_4()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getStatesKeyword_14_0()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getEqualsSignKeyword_14_1()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_14_2()));
-		match_components___StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2_RightSquareBracketKeyword_14_4__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getComponentsAccess().getStatesKeyword_14_0()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getEqualsSignKeyword_14_1()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_14_2()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_14_4()));
+		match_components___RightSquareBracketKeyword_15_4_StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_15_4()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getStatesKeyword_15_0()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getEqualsSignKeyword_15_1()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_15_2()));
+		match_components___StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2_RightSquareBracketKeyword_15_4__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getComponentsAccess().getStatesKeyword_15_0()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getEqualsSignKeyword_15_1()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getLeftSquareBracketKeyword_15_2()), new TokenAlias(false, false, grammarAccess.getComponentsAccess().getRightSquareBracketKeyword_15_4()));
 	}
 	
 	@Override
@@ -64,10 +64,10 @@ public class ArduinoSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_components___RightSquareBracketKeyword_14_4_StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2__a.equals(syntax))
-				emit_components___RightSquareBracketKeyword_14_4_StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_components___StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2_RightSquareBracketKeyword_14_4__a.equals(syntax))
-				emit_components___StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2_RightSquareBracketKeyword_14_4__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_components___RightSquareBracketKeyword_15_4_StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2__a.equals(syntax))
+				emit_components___RightSquareBracketKeyword_15_4_StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_components___StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2_RightSquareBracketKeyword_15_4__a.equals(syntax))
+				emit_components___StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2_RightSquareBracketKeyword_15_4__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -79,12 +79,12 @@ public class ArduinoSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     component_state+=component_state (ambiguity) component_state+=component_state
-	 *     connectors+=connectors ']' 'states' '=' '[' (ambiguity) component_state+=component_state
-	 *     name=ID '{' 'type' '=' '{' type '}' ',' 'connectors' '=' '[' ']' 'states' '=' '[' (ambiguity) component_state+=component_state
+	 *     connectors+=connectors ']' ',' 'states' '=' '[' (ambiguity) component_state+=component_state
+	 *     name=ID '{' 'type' '=' '{' type '}' ',' 'connectors' '=' '[' ']' ',' 'states' '=' '[' (ambiguity) component_state+=component_state
 	 
 	 * </pre>
 	 */
-	protected void emit_components___RightSquareBracketKeyword_14_4_StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_components___RightSquareBracketKeyword_15_4_StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -95,12 +95,12 @@ public class ArduinoSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     component_state+=component_state ']' (ambiguity) '}' (rule end)
-	 *     connectors+=connectors ']' (ambiguity) '}' (rule end)
-	 *     name=ID '{' 'type' '=' '{' type '}' ',' 'connectors' '=' '[' ']' (ambiguity) '}' (rule end)
+	 *     connectors+=connectors ']' ',' (ambiguity) '}' (rule end)
+	 *     name=ID '{' 'type' '=' '{' type '}' ',' 'connectors' '=' '[' ']' ',' (ambiguity) '}' (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_components___StatesKeyword_14_0_EqualsSignKeyword_14_1_LeftSquareBracketKeyword_14_2_RightSquareBracketKeyword_14_4__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_components___StatesKeyword_15_0_EqualsSignKeyword_15_1_LeftSquareBracketKeyword_15_2_RightSquareBracketKeyword_15_4__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -18,6 +18,8 @@ import org.xtext.example.mydsl.arduino.component;
 import org.xtext.example.mydsl.arduino.component_state;
 import org.xtext.example.mydsl.arduino.components;
 import org.xtext.example.mydsl.arduino.connection;
+import org.xtext.example.mydsl.arduino.max;
+import org.xtext.example.mydsl.arduino.min;
 import org.xtext.example.mydsl.arduino.state;
 import org.xtext.example.mydsl.arduino.transition;
 import org.xtext.example.mydsl.arduino.transition_effect;
@@ -51,6 +53,20 @@ public class ArduinoPackageImpl extends EPackageImpl implements ArduinoPackage
    * @generated
    */
   private EClass component_stateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass minEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass maxEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -271,6 +287,50 @@ public class ArduinoPackageImpl extends EPackageImpl implements ArduinoPackage
   public EAttribute getcomponent_state_Name()
   {
     return (EAttribute)component_stateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getmin()
+  {
+    return minEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getmin_Name()
+  {
+    return (EAttribute)minEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getmax()
+  {
+    return maxEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getmax_Name()
+  {
+    return (EAttribute)maxEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -581,6 +641,12 @@ public class ArduinoPackageImpl extends EPackageImpl implements ArduinoPackage
     component_stateEClass = createEClass(COMPONENT_STATE);
     createEAttribute(component_stateEClass, COMPONENT_STATE__NAME);
 
+    minEClass = createEClass(MIN);
+    createEAttribute(minEClass, MIN__NAME);
+
+    maxEClass = createEClass(MAX);
+    createEAttribute(maxEClass, MAX__NAME);
+
     connectionEClass = createEClass(CONNECTION);
     createEReference(connectionEClass, CONNECTION__COMPONENT);
     createEReference(connectionEClass, CONNECTION__WIRING);
@@ -656,6 +722,12 @@ public class ArduinoPackageImpl extends EPackageImpl implements ArduinoPackage
 
     initEClass(component_stateEClass, component_state.class, "component_state", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getcomponent_state_Name(), ecorePackage.getEString(), "name", null, 0, 1, component_state.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(minEClass, min.class, "min", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getmin_Name(), ecorePackage.getEString(), "name", null, 0, 1, min.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(maxEClass, max.class, "max", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getmax_Name(), ecorePackage.getEString(), "name", null, 0, 1, max.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(connectionEClass, connection.class, "connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getconnection_Component(), this.getcomponent(), null, "component", null, 0, -1, connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

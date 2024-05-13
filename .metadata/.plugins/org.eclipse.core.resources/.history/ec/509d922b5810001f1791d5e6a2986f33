@@ -1,0 +1,89 @@
+grammar org.xtext.example.mydsl.Arduino with org.eclipse.xtext.common.Terminals
+
+generate arduino "http://www.xtext.org/example/mydsl/Arduino"
+
+
+	
+/*
+Bauteilbeschreibung:
+
+component LED-RED {
+	type = {actor},
+	connectors = [GND, DIGITAL_IN],
+	states = [ON {DIGITAL_IN = HIGH},
+	OFF {DIGITAL_IN = LOW}]
+} ...
+
+define ARDUINO {
+	type = {microcontroller},
+	connectors = [GND1, GND2, DIGITAL_OUT1 ...
+}
+  
+*/
+
+Model: components += components* connection=connection behavior=behavior;
+
+components: 'component' name=ID '{' 
+	'type' '=' '{' type '}' ','
+	'connectors' '=' '[' connectors+=connectors* ']' ','
+	('states' '=' '[' component_state+=component_state* ']')*
+	//('range'   '=' '[' min=min ',' max =max']')?
+'}';
+
+type: 'actor' | 'sensor' | 'microcontroller';
+
+connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0' | 'ANALOG_IN' | 'ANALOG_X' | 'ANALOG_Y' | 'DIGITAL_BUTTON';
+
+component_state: name=ID '{' connector_definition '}';
+
+connector_definition: connectors '=' LEVEL;
+
+LEVEL: 'HIGH' | 'LOW';
+min: name=ID;
+max: name=ID;
+
+/*
+Verdrahtungsbeschreibung
+
+connection {
+ new LED-RED LED-RED1
+ new ARDUINO ARDUINO1
+ LED1.GND = ARDUINO1.GND1
+ LED1.DIGITAL_IN = ARDUINO1.DIGITAL_OUT
+}
+
+ */
+ 
+connection : {connection} 'connection' '{' component+=component* wiring+=wiring*'}'; 
+
+component : 'new' components=[components] name=ID ;
+
+wiring : src=[component] '.' src_port=connectors '=' tar=[component] '.' tar_port=connectors; 
+
+/*
+
+Funktionsbeschreibung
+behavior {
+@startuml
+[*] --> Off
+Off: LED-RED1.state=OFF
+
+Off --> On : delay[1000]
+On: LED-RED1.state=ON
+
+On --> Off : delay[1000]
+@enduml
+}
+ * 
+ */
+
+behavior: {behavior} 'behavior' '{' '@startuml' states+=state* transitions+=transition* '@enduml' '}';
+ 
+transition: ( '[*]' |src_state=[state]) '-->' tar_state=[state] transition_effect=transition_effect?;
+ 
+transition_effect: ':' 'delay' '[' (microseconds=INT) ']'; 
+ 
+state: name=ID ':' component=[component] '.state' '=' component_state=[component_state|FQN];
+ 
+ // Full Qualified Name
+ FQN: ID ("." ID)*;

@@ -51,6 +51,24 @@ public interface ArduinoFactory extends EFactory
   component_state createcomponent_state();
 
   /**
+   * Returns a new object of class '<em>min</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>min</em>'.
+   * @generated
+   */
+  min createmin();
+
+  /**
+   * Returns a new object of class '<em>max</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>max</em>'.
+   * @generated
+   */
+  max createmax();
+
+  /**
    * Returns a new object of class '<em>connection</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

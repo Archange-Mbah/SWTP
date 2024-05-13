@@ -31,13 +31,15 @@ components: 'component' name=ID '{'
 
 type: 'actor' | 'sensor' | 'microcontroller';
 
-connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0';
+connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'A0' | 'ANALOG_IN' | 'ANALOG_X' | 'ANALOG_Y' | 'DIGITAL_BUTTON';
 
 component_state: name=ID '{' connector_definition '}';
 
 connector_definition: connectors '=' LEVEL;
 
 LEVEL: 'HIGH' | 'LOW';
+min: name=ID;
+max: name=ID;
 
 /*
 Verdrahtungsbeschreibung

@@ -68,6 +68,8 @@ public class ArduinoFactoryImpl extends EFactoryImpl implements ArduinoFactory
       case ArduinoPackage.MODEL: return createModel();
       case ArduinoPackage.COMPONENTS: return createcomponents();
       case ArduinoPackage.COMPONENT_STATE: return createcomponent_state();
+      case ArduinoPackage.MIN: return createmin();
+      case ArduinoPackage.MAX: return createmax();
       case ArduinoPackage.CONNECTION: return createconnection();
       case ArduinoPackage.COMPONENT: return createcomponent();
       case ArduinoPackage.WIRING: return createwiring();
@@ -114,6 +116,30 @@ public class ArduinoFactoryImpl extends EFactoryImpl implements ArduinoFactory
   {
     component_stateImpl component_state = new component_stateImpl();
     return component_state;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public min createmin()
+  {
+    minImpl min = new minImpl();
+    return min;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public max createmax()
+  {
+    maxImpl max = new maxImpl();
+    return max;
   }
 
   /**
