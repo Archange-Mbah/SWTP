@@ -2,42 +2,217 @@ grammar org.xtext.model.MyDsl with org.eclipse.xtext.common.Terminals
 
 generate myDsl "http://www.xtext.org/model/MyDsl"
 
-Model:
-	components+=Component*
-	connections+=Connection*;
+Model: components += components* connection=connection behavior=behavior;
+
 	
 Component:
-	LED | Microcontroller | Button |
+	LED | Microcontroller | Button | Buzzer| Potentiometer|Photoresistor
 ;
+
+type: 'actor' | 'sensor' | 'microcontroller';
 
 LED:
-	'define' 'LED' name=ID '{'
-	'type' '=' '{' type=ComponentType '}'
-	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
-	'states' '=' '[' states+=State (',' states+=State)* ']'
-	'}'	
-	;
-Button:
-	'define' 'Button' name=ID '{'
-	'type' '=' '{' type=ComponentType '}'
-	'connectors' '=' '[' connectors+=Connector (',' connectors+=Connector)*
-	'states' '=' '[' states+=State (',' states+=State)* ']'
-	'}'
-	;	
-ComponentType:
-	'actor' | 'Microcontroller' | 'sensor'
-;	
-Connector:
-	ID
-;
-State:
-	ID '{' condition=Condition '}' 
-;
-Condition:
-	ID '=' value=BOOLEAN
-;
+    'component' 'LED' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
 
-enum BOOLEAN:
-	HIGH | LOW 
-	
-;
+Microcontroller:
+    'component' 'Mikrocontroller' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
+
+Button:
+    'component' 'Button' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
+
+Buzzer:
+    'component' 'Buzzer' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
+
+Potentiometer:
+    'component' 'Potentiometer' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
+
+Photoresistor:
+    'component' 'Photoresistor' name=ID '{'
+    'type' '=' '{' type=Typ '}' ','
+    'connectors' '=' '[' connectors+=Connectors* ']' ','
+    'states' '=' '[' component_state+=component_state* ']'
+    '}';
+
+LEDMatrix:
+    'component' 'LED_MATRIX' name=ID '{'
+    'type' '=' '{' type=Type '}' ','
+    'connectors' '=' '[' connectors+=Connector* ']' ','
+    'size' '=' '[' sizeX=INT ',' sizeY=INT ']'
+    '}';
+
+
+JoyStick:
+    'component' 'JoyStick' name=ID '{'
+    'type' '=' '{' type=Type '}' ','
+    'connectors' '=' '[' connectors+=Connector* ']' ','
+    'states' '=' '[' component_state+=ComponentState* ']' ','
+    'range_X' '=' '[' rangeX+=Range* ']' ','
+    'range_Y' '=' '[' rangeY+=Range* ']'
+    '}';
+
+Range:
+    'range' ID '=' '[' min=INT ',' max=INT ']';
+
+
+
+connectors: 'GND' | 'GND1' | 'GND2' | 'DIGITAL_IN' | 'DIGITAL_OUT'| 'A0';
+
+component_state: name=ID '{' connector_definition '}';
+
+connector_definition: connectors '=' LEVEL;
+
+LEVEL: 'HIGH' | 'LOW';
+
+terminal INT:
+    ('0'..'9')+;
+
+
+	/*
+Verdrahtungsbeschreibung
+
+connection {
+ new LED-RED LED-RED1
+ new ARDUINO ARDUINO1
+ LED1.GND = ARDUINO1.GND1
+ LED1.DIGITAL_IN = ARDUINO1.DIGITAL_OUT
+}
+
+ */
+ 
+connection : {connection} 'connection' '{' component+=component* wiring+=wiring*'}'; 
+
+component : 'new' components=[components] name=ID ;
+
+wiring : src=[component] '.' src_port=connectors '=' tar=[component] '.' tar_port=connectors; 
+
+/*
+
+Funktionsbeschreibung
+behavior {
+@startuml
+[*] --> Off
+Off: LED-RED1.state=OFF
+
+Off --> On : delay[1000]
+On: LED-RED1.state=ON
+
+On --> Off : delay[1000]
+@enduml
+}
+ * 
+ */
+
+behavior: {behavior} 'behavior' '{' '@startuml' states+=state* transitions+=transition* '@enduml' '}';
+ 
+transition: ( '[*]' |src_state=[state]) '-->' tar_state=[state] transition_effect=transition_effect?;
+ 
+transition_effect: ':' 'delay' '[' (microseconds=INT) ']'; 
+ 
+state: name=ID ':' component=[component] '.state' '=' component_state=[component_state|FQN];
+ 
+ // Full Qualified Name
+ FQN: ID ("." ID)*;
+
+
+
+
+ ////////!!!!!   Bauteilbeschreibung: 
+
+ component LED-BLUE {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' ON '{' DIGITAL_IN '=' HIGH '}' ',' OFF '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component BUTTON_S1 {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' PRESSED '{' DIGITAL_IN '=' HIGH '}' ',' RELEASED '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component BUTTON_S2 {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' PRESSED '{' DIGITAL_IN '=' HIGH '}' ',' RELEASED '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component BUTTON_S3 {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' PRESSED '{' DIGITAL_IN '=' HIGH '}' ',' RELEASED '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component BUTTON_S4 {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' PRESSED '{' DIGITAL_IN '=' HIGH '}' ',' RELEASED '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component Potentiometer {
+    //ID oder nicht
+    'type' '=' '{' actor '|' actor '}' ','
+    'connectors' '=' '[' GND ',' ANALOG_IN ']' ','
+    'range' '=' '[' 0 ',' 1023 ']' // Fotowiderstandswertebereich
+};
+
+component active_Buzzer {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_IN ']' ','
+    'states' '=' '[' ON '{' DIGITAL_IN '=' HIGH '}' ',' OFF '{' DIGITAL_IN '=' LOW '}' ']'
+};
+
+component PhotoResistor {
+    'type' '=' '{' sensor '}' ','
+    'connectors' '=' '[' GND ',' ANALOG_IN ']' ','
+    'range' '=' '[' 0 ',' 1023 ']' // Annahme: Fotowiderstandswertebereich von 0 bis 1023
+};
+
+component JoyStick {
+    'type' '=' '{' sensor '}' ','
+    'connectors' '=' '[' GND ',' ANALOG_X ',' ANALOG_Y ',' DIGITAL_BUTTON ']' ','
+    'states' '=' '[' PRESSED '{' DIGITAL_BUTTON '=' HIGH '}' ',' RELEASED '{' DIGITAL_BUTTON '=' LOW '}' ']' ','
+    'range_X' '=' '[' 0 ',' 1023 ']' ',' // Annahme: Bereich für X-Achse
+    'range_Y' '=' '[' 0 ',' 1023 ']' // Annahme: Bereich für Y-Achse
+};
+
+component LED_MATRIX {
+    'type' '=' '{' actor '}' ','
+    'connectors' '=' '[' GND ',' DIGITAL_OUT_DATA ',' DIGITAL_OUT_CLK ',' DIGITAL_OUT_CS ']' ','
+    'size' '=' '[' 8 ',' 8 ']' // Annahme: 8x8 LED-Matrix
+};
+
+component ARDUINO {
+    'type' '=' '{' microcontroller '}' ','
+    'connectors' '=' '[' GND1 ',' GND2 ',' DIGITAL_OUT1 ']'
+};
+
+behavior {
+    '@startuml'
+    '[*]' '-->' Off
+    'Off' ':' 'LED-RED1.state=OFF'
+    'Off' '-->' On ':' delay[1000]
+    'On' ':' 'LED-RED1.state=ON'
+    'On' '-->' Off ':' delay[1000]
+    '@enduml'
+};
+
