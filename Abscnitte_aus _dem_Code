@@ -20,4 +20,67 @@ return ret;
 }
 
 
-part 2
+/*part 2 compile
+def String compile(message element1){
+		var ret="";
+		if (element1 instanceof message) {
+				ret += (element1 as message).getMethod().getOpeation().getName().toString + "(";
+				var par = (element1 as message).getMethod().getParameter_list().size;
+			
+			var currentIndex = 0;
+
+			for (parameter param : (element1 as message).getMethod().getParameter_list()) {
+				if (param.getConstant() !== null) {
+
+					if (param.getConstant().equals("0")) {
+						ret += "LOW";
+					} else if (param.getConstant().equals("1")) {
+						ret += "HIGH";
+					} else
+						ret += param.getConstant();
+				}
+				if (param.getComponent() !== null) {
+					// ret+= param.getComponent();
+					for (wiring wire1 : connection_list.getWiring()) {
+						   if ((wire1.getSrc_port().getName().equals("DIGITAL_OUT")) &&
+							(element1 as message).getMethod().getOpeation().getName().toString.equals("digitalWrite")	&& 
+							(wire1.getSrc().getName().equals(param.getComponent().getName()))) 
+							{
+								ret += wire1.getTar_port().getName();
+							}
+							else if ((wire1.getSrc_port().getName().equals("DIGITAL_OUT")) &&
+							(element1 as message).getMethod().getOpeation().getName().toString.equals("tone")	&& 
+							(wire1.getSrc().getName().equals(param.getComponent().getName()))) 
+							{
+								ret += wire1.getTar_port().getName();
+							}
+							
+							else if (wire1.getTar_port().getName().equals("DIGITAL_OUT") &&(
+								(element1 as message).getMethod().getOpeation().getName().toString.equals(
+									"digitalWrite")) && (wire1.getTar().getName().equals(param.getComponent().getName()))
+									) 
+									{
+								ret += wire1.getSrc_port().getName();
+							}
+							else  if( wire1.getTar_port().getName().equals("DIGITAL_OUT") &&((element1 as message).getMethod().getOpeation().getName().toString.equals(
+									"tone"))
+							 &&(wire1.getTar().getName().equals(param.getComponent().getName())))
+									{
+									ret += wire1.getSrc_port().getName();
+						}
+					}
+				} // else if(param.get)
+				else {
+					ret += "";
+				}
+				currentIndex = currentIndex + 1;
+				if (currentIndex < par) {
+					ret += ",";
+				}
+			}
+			ret += ");  \n";
+		}
+		
+	
+	return ret;
+	}
