@@ -1,0 +1,23 @@
+/*part 1
+-die Hauptmethode zur Generierung  von Code
+-Bearbeitet die Behaviors
+- Behavioir besteht aus  Alternative und messages.
+- wenn das objekt eine Instanz von message ist dann ruften wir  compile(message message); 
+-wenn das objekt eine Instanz von  alternative ist dann ruft er compile2(alternative alternative);
+*/
+def String compileBehavior(behavior behavior1) {
+
+		var String ret = "void loop () { \n";
+		
+		for (element element1 : behavior1.getElements()) {
+			if (element1 instanceof message) ret+=compile((element1 as message)) + "";
+			if(element1 instanceof alternative) ret+=compile2(element1 as alternative);
+      }
+      
+   ret += "\n }";
+	
+return ret;
+}
+
+
+part 2
