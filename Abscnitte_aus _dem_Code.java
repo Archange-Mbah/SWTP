@@ -29,7 +29,7 @@ return ret;
 - wenn ja wird der Name des ports in der String hinzugefügt.
 -wenn es um eine Konstante geht, haben wir folgendes
 (0 -> LOW) und (1->HIGH)
-
+*/
 def String compile(message element1){
 		var ret="";
 		if (element1 instanceof message) {
