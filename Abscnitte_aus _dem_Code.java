@@ -97,4 +97,57 @@ def String compile(message element1){
 /*part 3 compile 2
 -bearbeitet alternative
 -Alternativen bestehen aus Conditions und elements(messages oder alternativen)
-- Wir laufen durch die liste der
+- Wir greifen auf die methode in  conditions zu und schreiben den methoden Namen, falls es eine alternative ist.
+-dannach laufen wir durch die Parameterliste und Überprüfen ob der Koomponent sich in den Wirings befindet:
+ wenn ja überprüfen wir ob es um einen digital_in geht: 
+ ZB
+ alt
+    void digitalRead BUTTONs4==HIGH{
+    Buzzer-> Arduino: void tone  BUZZER 2000
+    }
+   else {
+   	 Buzzer-> Arduino: void noTone  2000
+   }
+
+-aber wenn es message ist rufen wir compile(message);
+*/
+
+def String compile2(alternative element1){
+		 var ret="";
+		 ret+= 'if  ('; 
+		 //ret+= element1.getCondition().eContents();
+		 for(EObject ob: element1.getCondition().eContents()){ // we get it's contents
+		 	if(ob instanceof operation_name ) ret+= (ob as operation_name).getName() + "(";
+		}
+		 	for(parameter p: (element1.getCondition() as method).parameter_list){ // we get the parameters of the alternative and try to get the corresponding ports through the wirings
+		 	for (wiring wire1 : connection_list.getWiring()) {
+				if(p.getComponent().equals(wire1.getSrc()) && wire1.getSrc_port().getName().equals("DIGITAL_IN")) ret+= wire1.getTar_port();
+				if(p.getComponent().equals(wire1.getTar())&&  wire1.getTar_port().getName().equals("DIGITAL_IN") ) ret+=wire1.getSrc_port();	   
+	}
+		 
+		 		
+		 }
+		 ret+=")";
+		 
+		 ret+= "== " + (element1.getCondition() as method).boolValue;
+		 
+		 ret+= ') { \n';  /*the part of the boolean expression is done */
+		  var count=0;
+		  for(element element2:element1.getElements()){
+		  	
+		  	if(element2 instanceof message){
+		  		 ret+=compile(element2 as message) + " }";
+		  		 if(count< element1.getElements().size-1) ret+=" \n else { \n "; 
+		  		}
+		  	  else if(element2 instanceof alternative){
+		  		ret+=compile2(element1 as alternative);
+		  	 }
+		  	 count++;
+		  	}
+		  
+		 return ret;
+		
+	}
+	
+	
+		
