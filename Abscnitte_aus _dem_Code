@@ -93,3 +93,8 @@ def String compile(message element1){
 	
 	return ret;
 	}
+
+/*part 3 compile 2
+-bearbeitet alternative
+-Alternativen bestehen aus Conditions und elements(messages oder alternativen)
+- Wir laufen durch die liste der
