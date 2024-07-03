@@ -21,6 +21,15 @@ return ret;
 
 
 /*part 2 compile
+- Bearbeitet messages
+- Such zuerst nach der Name der Operation und speichert das in einem String
+- laüft durch die  Parameterliste, wenn es um ein komponent geht, 
+  laüft er durch die  Liste der Verdrahtungen  und üperprüft ob dieser Komponent in einer Verdrahtungen zu finden ist.
+  wenn ja wird überprüft, ob es um Digital_out  und digitalWrite geht.
+- wenn ja wird der Name des ports in der String hinzugefügt.
+-wenn es um eine Konstante geht, haben wir folgendes
+(0 -> LOW) und (1->HIGH)
+
 def String compile(message element1){
 		var ret="";
 		if (element1 instanceof message) {
