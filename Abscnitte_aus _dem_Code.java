@@ -149,5 +149,10 @@ def String compile2(alternative element1){
 		
 	}
 	
-	
+
+/*Herausforderung
+-Match zwischen Komponenten und Wiring
+-Kommas und parameters
+-Alternativen und messages
+*/
 		
