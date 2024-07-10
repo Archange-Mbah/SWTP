@@ -29,6 +29,8 @@ return ret;
 - wenn ja wird der Name des ports in der String hinzugefügt.
 -wenn es um eine Konstante geht, haben wir folgendes
 (0 -> LOW) und (1->HIGH)
+  Arduino -> Arduino: void delay 10000
+  Arduino -> Arduino: void digitalWrite  LEDBLUE1 1
 */
 def String compile(message element1){
 		var ret="";
